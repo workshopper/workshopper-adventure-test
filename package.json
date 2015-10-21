@@ -1,0 +1,39 @@
+{
+  "name": "workshopper-adventure-test",
+  "version": "1.0.0",
+  "description": "A test system to test workshopper-adventures.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodeschool",
+    "workshopper",
+    "adventure",
+    "test"
+  ],
+  "bin": {
+    "workshopper-adventure-test": "./bin/workshopper-adventure-test"
+  },
+  "author": "Martin Heidegger <martin.heidegger@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "glob": "^5.0.15",
+    "lodash": "^3.10.1",
+    "mkdirp": "^0.5.1",
+    "mocha": "^2.3.3",
+    "rimraf": "^2.4.3",
+    "workshopper-adventure": "4.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/workshopper/workshopper-adventure-test.git"
+  },
+  "bugs": {
+    "url": "https://github.com/workshopper/workshopper-adventure-test/issues"
+  },
+  "homepage": "https://github.com/workshopper/workshopper-adventure-test"
+}

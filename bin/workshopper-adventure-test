@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+
+var Mocha = require('mocha')
+var path = require('path')
+var mocha = new Mocha({
+	timeout: 15000
+})
+mocha.reporter('spec')
+mocha.files = Mocha.utils.files(path.join(__dirname, '..', 'spec'), [ 'js' ])
+mocha.fullTrace()
+mocha.run()
