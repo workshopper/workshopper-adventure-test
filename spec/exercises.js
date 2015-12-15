@@ -42,7 +42,7 @@ describe('Exercises should be ', function () {
 })
 
 describe('Testing exercises', function () {
-	var exercises = exec.sync(['list']).toString().split('\n')
+	var exercises = exec.sync(['list', '--lang=en']).toString().split('\n')
 	exercises.pop(); // last line break
 	exercises.map(function (exercise) {
 		return wUtil.idFromName(exercise)
