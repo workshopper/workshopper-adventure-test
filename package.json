@@ -18,7 +18,12 @@
     "workshopper-adventure-test": "./bin/workshopper-adventure-test"
   },
   "standard": {
-    "globals": [ "describe", "it", "before", "beforeEach" ]
+    "globals": [
+      "describe",
+      "it",
+      "before",
+      "beforeEach"
+    ]
   },
   "author": "Martin Heidegger <martin.heidegger@gmail.com>",
   "license": "ISC",
@@ -28,10 +33,10 @@
     "mkdirp": "^0.5.1",
     "mocha": "^2.4.5",
     "rimraf": "^2.5.2",
-    "workshopper-adventure": "^4.4.6"
+    "workshopper-adventure": "^6.0.1"
   },
   "devDependencies": {
-    "mocha": "^2.4.5",
+    "mocha": "^3.2.0",
     "standard": "^9.0.0",
     "standard-version": "^4.0.0"
   },
