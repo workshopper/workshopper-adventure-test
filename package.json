@@ -26,6 +26,9 @@
     ]
   },
   "author": "Martin Heidegger <martin.heidegger@gmail.com>",
+  "contributors": [
+    "Denys Dovhan <email@denysdovhan.com> (http://denysdovhan.com)"
+  ],
   "license": "ISC",
   "dependencies": {
     "glob": "^7.0.0",
