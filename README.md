@@ -41,5 +41,5 @@ This test system will lookup the `./test` folder of your workshopper/adventure f
 In this example-structure two exercises will be tested: `hello_world` and `baby_steps`. The names are simplified version of the names returned by `$ <tutorial> list`. Any "valid" test has to pass, any "invalid" test has to fail.
 
 ## Status-QUO
-At the moment it works better than not but there are quite a few things that could and should be improved. Looking forward to help.
-
+At the moment it works better than not but there are quite a few things that could and should be improved.
+Help, feedback, suggestions for improvement warmly welcome!
