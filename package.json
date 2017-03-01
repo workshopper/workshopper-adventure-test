@@ -4,7 +4,8 @@
   "description": "A test system to test workshopper-adventures.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/standard",
+    "test": "npm run lint",
     "release": "./node_modules/.bin/standard-version"
   },
   "keywords": [
@@ -15,6 +16,9 @@
   ],
   "bin": {
     "workshopper-adventure-test": "./bin/workshopper-adventure-test"
+  },
+  "standard": {
+    "globals": [ "describe", "it", "before", "beforeEach" ]
   },
   "author": "Martin Heidegger <martin.heidegger@gmail.com>",
   "license": "ISC",
@@ -28,6 +32,7 @@
   },
   "devDependencies": {
     "mocha": "^2.4.5",
+    "standard": "^9.0.0",
     "standard-version": "^4.0.0"
   },
   "repository": {
