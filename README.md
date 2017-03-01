@@ -1,4 +1,7 @@
 # workshopper-adventure-test
+[![Build Status](https://travis-ci.org/workshopper/workshopper-adventure-test.svg?branch=master)](https://travis-ci.org/workshopper/workshopper-adventure-test)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+
 `workshopper-adventure-test` is test system specifically for nodeschool [workshopper-adventures](https://github.com/workshopper/workshopper-adventure). However: It should work also for [workshoppers](https://github.com/workshopper/workshopper) and [adventures](https://github.com/substack/adventure).
 
 ## Concept
