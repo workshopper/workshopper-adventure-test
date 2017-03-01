@@ -3,8 +3,11 @@
 var Mocha = require('mocha')
 var path = require('path')
 var mocha = new Mocha({
-	timeout: 15000
+  timeout: 15000
 })
+if (process.argv[2]) {
+  process.chdir(process.argv[2])
+}
 mocha.reporter('spec')
 mocha.files = Mocha.utils.files(path.join(__dirname, '..', 'spec'), [ 'js' ])
 mocha.fullTrace()

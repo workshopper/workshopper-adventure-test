@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "./node_modules/.bin/standard",
-    "test": "npm run lint",
+    "test": "npm run lint && npm run test:integration",
+    "test:integration": "bin/workshopper-adventure-test ./node_modules/learnyounode",
     "release": "./node_modules/.bin/standard-version"
   },
   "keywords": [
@@ -39,6 +40,7 @@
     "workshopper-adventure": "^6.0.1"
   },
   "devDependencies": {
+    "learnyounode": "^3.5.10",
     "mocha": "^3.2.0",
     "standard": "^9.0.0",
     "standard-version": "^4.0.0"
