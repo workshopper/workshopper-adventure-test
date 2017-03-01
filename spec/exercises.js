@@ -48,12 +48,12 @@ describe('Testing exercises', function () {
 		return wUtil.idFromName(exercise)
 	}).forEach(function (id, nr) {
 		var folder = path.join(process.cwd(), 'test', id)
-		  , allFiles = require('glob').sync('*.js', {
+		  , allFiles = require('glob').sync('*.*', {
 				cwd: folder
 			})
 
 		allFiles.filter(function (file) {
-			return /^(in)?valid_\d+.js$/.test(file)
+			return /^(in)?valid(-|_)?(\d*)?.\w+/.test(file)
 		}).forEach(function (file, fileNr) {
 			it('./' + path.relative(process.cwd(), path.join(folder, file)) + ' (' + nr + ':' + fileNr + ')	 ', function (done) {
 				exec.async(['select', id], function (err, stdout, stderr) {
