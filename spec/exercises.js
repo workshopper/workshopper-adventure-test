@@ -52,7 +52,7 @@ describe('Testing exercises', function () {
     })
 
     allFiles.filter(function (file) {
-      return /^(in)?valid(-|_)?(\d*)?.\w+/.test(file)
+      return /^(in)?valid(-|_)?(\d*)?\.\w+/.test(file)
     }).forEach(function (file, fileNr) {
       it('./' + path.relative(process.cwd(), path.join(folder, file)) + ' (' + nr + ':' + fileNr + ')\t ', function (done) {
         exec.async(['select', id], function (err, stdout, stderr) {
