@@ -11,4 +11,4 @@ if (process.argv[2]) {
 mocha.reporter('spec')
 mocha.files = Mocha.utils.files(path.join(__dirname, '..', 'spec'), [ 'js' ])
 mocha.fullTrace()
-mocha.run()
+mocha.run(process.exit.bind(process))
