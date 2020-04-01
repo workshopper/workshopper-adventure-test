@@ -37,7 +37,7 @@
     "mkdirp": "^1.0.3",
     "mocha": "^6.2.0",
     "rimraf": "^3.0.2",
-    "workshopper-adventure": "^6.0.1"
+    "workshopper-adventure": "^6.1.0"
   },
   "devDependencies": {
     "learnyounode": "^3.5.10",
