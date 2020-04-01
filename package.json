@@ -42,7 +42,7 @@
   "devDependencies": {
     "learnyounode": "^3.5.10",
     "standard": "^10.0.2",
-    "standard-version": "^4.0.0"
+    "standard-version": "^7.1.0"
   },
   "repository": {
     "type": "git",
