@@ -40,7 +40,7 @@
     "workshopper-adventure": "^6.1.0"
   },
   "devDependencies": {
-    "learnyounode": "^3.5.10",
+    "learnyounode": "^4.2.1",
     "standard": "^10.0.2",
     "standard-version": "^7.1.0"
   },
