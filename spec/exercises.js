@@ -73,7 +73,7 @@ describe('Testing exercises', function () {
       id: wUtil.idFromName(exercise, config.spaceChar)
     }
   }).forEach(function ({ name, id }, nr) {
-    var folder = path.join(process.cwd(), config.exercisesFolder, id)
+    var folder = path.join(...[process.cwd(), ...[].concat(config.exercisesFolder), id])
     var allFiles = require('glob').sync(config.files, {
       cwd: folder
     })
