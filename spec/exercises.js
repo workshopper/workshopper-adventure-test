@@ -80,11 +80,11 @@ describe('Testing exercises', function () {
 
     allFiles.filter(isTestFile).forEach(function (file, fileNr) {
       it('./' + path.relative(process.cwd(), path.join(folder, file)) + ' (' + nr + ':' + fileNr + ')\t ', function (done) {
-        exec.async(['select', name, '--lang=en'], function (err, stdout, stderr) {
+        exec.async(['select', name, '--lang=en'], function (err, _stdout, _stderr) {
           if (err) {
             throw new Error('Select didnt work out: ' + err)
           }
-          exec.async(['verify', path.resolve(folder, file)], function (err, stdout2, stdrr) {
+          exec.async(['verify', path.resolve(folder, file)], function (err, stdout2, _stdrr) {
             if (isInvalidFile(file)) {
               if (!err) {
                 throw new Error(stdout2)
