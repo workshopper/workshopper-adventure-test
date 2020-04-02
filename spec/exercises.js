@@ -5,8 +5,8 @@ var fs = require('fs')
 var _ = require('lodash')
 var wUtil = require('workshopper-adventure/util')
 var config = {
-  validRegex: /^(in)?valid(-|_)?(\d*)?\.\w+/,
-  invalidRegex: /^invalid/,
+  testFileRegex: /^(in)?valid(-|_)?(\d*)?\.\w+/,
+  invalidTestRegex: /^invalid/,
   exercisesFolder: 'test',
   files: '*.*',
   spaceChar: '_'
@@ -21,6 +21,12 @@ if (fs.existsSync(configPath)) {
     process.exit(1)
   }
 }
+var isTestFile = RegExp.prototype.test.bind(
+  new RegExp(config.testFileRegex)
+)
+var isInvalidFile = RegExp.prototype.test.bind(
+  new RegExp(config.invalidTestRegex)
+)
 
 function getExercises (done) {
   exec.async(['list'], function (err, stdout, stderr) {
@@ -72,18 +78,14 @@ describe('Testing exercises', function () {
       cwd: folder
     })
 
-    allFiles.filter(function (file) {
-      var validRe = new RegExp(config.validRegex)
-      return validRe.test(file)
-    }).forEach(function (file, fileNr) {
+    allFiles.filter(isTestFile).forEach(function (file, fileNr) {
       it('./' + path.relative(process.cwd(), path.join(folder, file)) + ' (' + nr + ':' + fileNr + ')\t ', function (done) {
         exec.async(['select', name, '--lang=en'], function (err, stdout, stderr) {
           if (err) {
             throw new Error('Select didnt work out: ' + err)
           }
           exec.async(['verify', path.resolve(folder, file)], function (err, stdout2, stdrr) {
-            var invalidRe = new RegExp(config.invalidRegex)
-            if (invalidRe.test(file)) {
+            if (isInvalidFile(file)) {
               if (!err) {
                 throw new Error(stdout2)
               }
