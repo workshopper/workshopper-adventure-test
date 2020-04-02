@@ -2,7 +2,6 @@ var exec = require('../lib/exec')
 var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
-var mkdirp = require('mkdirp')
 
 function checkCurrent (current, done, err, stdout, stderr) {
   if (err) {
@@ -34,7 +33,7 @@ function writeCurrentAsFirst (done) {
   getEntries(function (list) {
     var first = list[0]
     var pth = path.join(exec.testHome, '.config', exec.binName)
-    mkdirp.sync(pth)
+    fs.mkdirSync(pth, { recursive: true })
     fs.writeFileSync(path.join(pth, 'current.json'), JSON.stringify(first))
     done(first)
   })
