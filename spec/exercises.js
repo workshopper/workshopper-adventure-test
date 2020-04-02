@@ -1,13 +1,25 @@
 var exec = require('../lib/exec')
 var assert = require('assert')
 var path = require('path')
+var fs = require('fs')
 var _ = require('lodash')
 var wUtil = require('workshopper-adventure/util')
-var config
-try {
-  config = require(`${process.cwd()}/.workshopper-test.config.js`)
-} catch (_) {
-  config = {}
+var config = {
+  validRegex: /^(in)?valid(-|_)?(\d*)?\.\w+/,
+  invalidRegex: /^invalid/,
+  exercisesFolder: 'test',
+  files: '*.*',
+  spaceChar: '_'
+}
+var configPath = `${process.cwd()}/.workshopper-test.config.js`
+if (fs.existsSync(configPath)) {
+  try {
+    Object.assign(config, require(configPath))
+  } catch (err) {
+    console.error('Configuration file at "' + configPath + '" could not be read!')
+    console.error(err.stack)
+    process.exit(1)
+  }
 }
 
 function getExercises (done) {
@@ -55,14 +67,13 @@ describe('Testing exercises', function () {
       id: wUtil.idFromName(exercise, config.spaceChar)
     }
   }).forEach(function ({ name, id }, nr) {
-    var folder = path.join(process.cwd(), config.exercisesFolder || 'test', id)
-    var allFiles = require('glob').sync(config.files || '*.*', {
+    var folder = path.join(process.cwd(), config.exercisesFolder, id)
+    var allFiles = require('glob').sync(config.files, {
       cwd: folder
     })
 
     allFiles.filter(function (file) {
-      var valid = config.validRegex || /^(in)?valid(-|_)?(\d*)?\.\w+/
-      var validRe = new RegExp(valid)
+      var validRe = new RegExp(config.validRegex)
       return validRe.test(file)
     }).forEach(function (file, fileNr) {
       it('./' + path.relative(process.cwd(), path.join(folder, file)) + ' (' + nr + ':' + fileNr + ')\t ', function (done) {
@@ -71,8 +82,7 @@ describe('Testing exercises', function () {
             throw new Error('Select didnt work out: ' + err)
           }
           exec.async(['verify', path.resolve(folder, file)], function (err, stdout2, stdrr) {
-            var invalid = config.invalidRegex || /^invalid/
-            var invalidRe = new RegExp(invalid)
+            var invalidRe = new RegExp(config.invalidRegex)
             if (invalidRe.test(file)) {
               if (!err) {
                 throw new Error(stdout2)
