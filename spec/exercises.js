@@ -34,7 +34,7 @@ describe('Exercises should be ', function () {
   })
   it('with an empty last-line', function (done) {
     getExercises(function (exercises) {
-      assert.equal(exercises.pop(), '')
+      assert.strictEqual(exercises.pop(), '')
       done()
     })
   })

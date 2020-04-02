@@ -2,20 +2,19 @@ var exec = require('../lib/exec')
 var assert = require('assert')
 var fs = require('fs')
 var path = require('path')
-var mkdirp = require('mkdirp')
 
 function checkCurrent (current, done, err, stdout, stderr) {
   if (err) {
     assert.fail('Cant retreive current. (' + err.code + ' / ' + err.signal + '): \n' + stdout.toString() + ' ' + stderr.toString())
   }
 
-  assert.equal(stdout.toString(), current + '\n')
+  assert.strictEqual(stdout.toString(), current + '\n')
   return done()
 }
 
 function checkCurrentEmpty (done, err, stdout, stderr) {
-  assert.equal(err.code, 1)
-  assert.equal(stdout.toString(), 'No active exercise. Select one from the menu.\n')
+  assert.strictEqual(err.code, 1)
+  assert.strictEqual(stdout.toString(), 'No active exercise. Select one from the menu.\n')
   done()
 }
 
@@ -34,7 +33,7 @@ function writeCurrentAsFirst (done) {
   getEntries(function (list) {
     var first = list[0]
     var pth = path.join(exec.testHome, '.config', exec.binName)
-    mkdirp.sync(pth)
+    fs.mkdirSync(pth, { recursive: true })
     fs.writeFileSync(path.join(pth, 'current.json'), JSON.stringify(first))
     done(first)
   })
@@ -133,7 +132,7 @@ describe('`select` should', function () {
 
   it('dont break down with the selection of nothing', function (done) {
     exec.async(['select', ''], function (err, stdout) {
-      assert.equal(err.code, 1)
+      assert.strictEqual(err.code, 1)
       testCurrent(checkCurrentEmpty.bind(null, done))
     })
   })

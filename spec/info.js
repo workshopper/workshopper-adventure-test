@@ -6,7 +6,7 @@ function checkVersion (done, err, stdout, stderr) {
     assert.fail('Cant retreive version. (' + err.code + ' / ' + err.signal + '): \n' + stderr.toString())
   }
 
-  assert.equal(stdout.toString(), exec.binName + '@' + exec.pkg.version.toString() + '\n')
+  assert.strictEqual(stdout.toString(), exec.binName + '@' + exec.pkg.version.toString() + '\n')
   return done()
 }
 

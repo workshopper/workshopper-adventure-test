@@ -9,6 +9,6 @@ if (process.argv[2]) {
   process.chdir(process.argv[2])
 }
 mocha.reporter('spec')
-mocha.files = Mocha.utils.files(path.join(__dirname, '..', 'spec'), [ 'js' ])
+mocha.files = Mocha.utils.lookupFiles(path.join(__dirname, '..', 'spec'), [ 'js' ])
 mocha.fullTrace()
 mocha.run(process.exit.bind(process))
