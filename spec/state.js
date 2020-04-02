@@ -9,13 +9,13 @@ function checkCurrent (current, done, err, stdout, stderr) {
     assert.fail('Cant retreive current. (' + err.code + ' / ' + err.signal + '): \n' + stdout.toString() + ' ' + stderr.toString())
   }
 
-  assert.equal(stdout.toString(), current + '\n')
+  assert.strictEqual(stdout.toString(), current + '\n')
   return done()
 }
 
 function checkCurrentEmpty (done, err, stdout, stderr) {
-  assert.equal(err.code, 1)
-  assert.equal(stdout.toString(), 'No active exercise. Select one from the menu.\n')
+  assert.strictEqual(err.code, 1)
+  assert.strictEqual(stdout.toString(), 'No active exercise. Select one from the menu.\n')
   done()
 }
 
@@ -133,7 +133,7 @@ describe('`select` should', function () {
 
   it('dont break down with the selection of nothing', function (done) {
     exec.async(['select', ''], function (err, stdout) {
-      assert.equal(err.code, 1)
+      assert.strictEqual(err.code, 1)
       testCurrent(checkCurrentEmpty.bind(null, done))
     })
   })
