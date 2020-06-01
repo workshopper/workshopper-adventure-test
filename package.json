@@ -32,8 +32,8 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "glob": "^7.0.0",
-    "lodash": "^4.6.0",
+    "glob": "^7.1.6",
+    "lodash": "^4.17.15",
     "mocha": "^7.1.1",
     "rimraf": "^3.0.2",
     "workshopper-adventure": "^6.1.0"
@@ -41,7 +41,7 @@
   "devDependencies": {
     "learnyounode": "^4.2.1",
     "standard": "^14.3.3",
-    "standard-version": "^7.1.0"
+    "standard-version": "^8.0.0"
   },
   "repository": {
     "type": "git",
